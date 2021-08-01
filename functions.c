@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   functions.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
+/*   Updated: 2021/08/01 17:05:33 by jmendes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	s(int *stack, int control)
@@ -51,9 +63,9 @@ void	rr(int *stack, int size, int control)
 	int tmp;
 
 	tmp = stack[size - 1];
-	while (size > 0)
+	while (size > 1)
 	{
-		stack[size] = stack[size - 1];
+		stack[size - 1] = stack[size - 2];
 		size--;
 	}
 	stack[0] = tmp;

@@ -5,16 +5,21 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct s_strc
+typedef struct s_st
 {
+	int *stack_a;
+	int *stack_b;
 	int size;
-}		t_strc;	
+	int position;
+	int value;
 
-typedef struct	s_list
+}		t_list;	
+
+/*typedef struct	s_list
 {
 	int			*content;
 	struct s_list	*next;
-}				t_list;
+}				t_list;*/
 
 int	ft_atoi(const char *str);
 
