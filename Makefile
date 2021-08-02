@@ -8,6 +8,7 @@ HEADER	= push_swap.h
 SRCS	= push_swap1.c\
 	  utils.c\
 	  functions.c\
+	  mainFunctions.c\
 #LIBFT	=./libft/libft.a
 
 OBJS	= $(SRCS:.c=.o)

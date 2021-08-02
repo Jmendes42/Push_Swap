@@ -29,6 +29,10 @@ void	r(int *stack, int size, int control);
 void	p(int *stack_p, int *stack_r, int size, int control);
 void	rr(int *stack, int size, int control);
 void	p(int *stack_p, int *stack_r, int size, int control);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	push(int *stack_a, int *stack_b, int size);
+void	initStruct(t_list *s_st, int argc, char *argv[]);
+int	zerochk(int *stack, int size);
 
 //LISTS
 t_list	*ft_lstnew(void *content);
