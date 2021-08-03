@@ -7,9 +7,11 @@
 
 typedef struct s_st
 {
-	int *stack_a;
-	int *stack_b;
+	int	*stack_a;
+	int	*stack_b;
 	int size;
+	int sizeA;
+	int sizeB;
 	int position;
 	int value;
 
@@ -31,8 +33,12 @@ void	rr(int *stack, int size, int control);
 void	p(int *stack_p, int *stack_r, int size, int control);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	push(int *stack_a, int *stack_b, int size);
-void	initStruct(t_list *s_st, int argc, char *argv[]);
+void	initStruct(t_list *s_st, int argc);
 int	zerochk(int *stack, int size);
+void	initStacks(int *stack_a, int *stack_b, int size, char *argv[]);
+int	organizeGhost(int *stack, int size);
+void	Digits(int *stack, int sizeA);
+void	sender(int *stack_a, int *stack_b, t_list *s_st);
 
 //LISTS
 t_list	*ft_lstnew(void *content);

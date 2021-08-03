@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/01 17:05:33 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/03 06:03:52 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	p(int *stack_p, int *stack_r, int size, int control)
 {
 	int tmp;
 
-	if (stack_p[0] < 1)
-		return ;
 	tmp = stack_p[0];
 	stack_p[0] = 0;
 	r(stack_p, size, 0);
