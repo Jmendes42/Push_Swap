@@ -56,7 +56,7 @@ void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 
 int	organizeGhost(int *stack, int size)
 {
-	int	temp;
+	int	tmp;
 	int	index;
 	int	stackGhost[size];
 
@@ -64,18 +64,28 @@ int	organizeGhost(int *stack, int size)
 	while (index < size)
 	{
 		stackGhost[index] = stack[index];
+			printf("##%d\n", stackGhost[index]);
 		index++;
 	}
 	index = 0;
 	while (index < size)
 	{
-		if (stackGhost[index] > stackGhost[index + 1])
+		while (stackGhost[index] < stackGhost[index + 1])
 		{
-			temp = stackGhost[index];
+			if (stackGhost[index + 1] == 0)
+				break ;
+			printf("%d    %d\n", stackGhost[index], stackGhost[index + 1]);
+			tmp = stackGhost[index + 1];
 			stackGhost[index] = stackGhost[index + 1];
-			stackGhost[index + 1] = temp;
-			index = -1;
+			stackGhost[index + 1] = tmp;
+			 index--;
 		}
+		index++;
+	}
+	index = 0;
+	while (index < size)
+	{
+		printf("##########%d\n", stackGhost[index]);
 		index++;
 	}
 	return (stackGhost[size / 2]);
@@ -102,14 +112,15 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	index = 0;
 	while (s_st->sizeA > 3)
 	{
-		printf("*****%d\n", s_st->sizeA);
+		//printf("*****%d\n", s_st->sizeA);
 		index = 0;
 		s_st->value = organizeGhost(stack_a, s_st->size);
+		printf("###%d###\n", s_st->value);
 		while (index < s_st->size)
 		{
 			if (stack_a[index] <= s_st->value)
 			{
-				p(stack_a, stack_b, s_st->size, 2);
+				p(stack_b, stack_a, s_st->size, 1);
 				s_st->sizeA--;
 			}
 			else

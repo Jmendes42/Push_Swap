@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/03 06:03:52 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/03 19:15:34 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,12 @@ void	rr_r(int *stack_a, int *stack_b, int size)
 	rr(stack_a, size, 0);
 	rr(stack_b, size, 0);
 }
-void	p(int *stack_p, int *stack_r, int size, int control)
+void	p(int *stack_r, int *stack_p, int size, int control)
 {
 	int tmp;
 
 	tmp = stack_p[0];
+	printf("****%d*****\n", tmp);
 	stack_p[0] = 0;
 	r(stack_p, size, 0);
 	rr(stack_r, size, 0);

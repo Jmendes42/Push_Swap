@@ -6,45 +6,11 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/03 06:15:02 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/03 18:12:53 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*void	zeroTransform(int *stack, int size)
-{
-	int index;
-
-	index = 0;
-	while (index < size - 1)
-	{
-		printf("%d\n", stack[index]);
-		if (stack[index] == 0)
-		{
-			printf("%d\n", stack[index]);
-			stack[index] = -1;
-		}
-		index++;
-	}
-}*/
-
-/*void	smallerNumber(int *stack, int size)
-{
-	int index;
-
-	index = 0;
-	while (index < size)
-	{
-		if (stack[index] < s_st->value)
-		{
-			s_st->value = stack[index];
-			s_st->position = index;
-		}
-		index++;
-	}
-}*/
-
 
 void	Digits(int *stack, int sizeA)
 {
@@ -114,27 +80,27 @@ int	main(int argc, char *argv[])
 {
 	t_list	s_st;
 	
+	if (argc == 4)
+	{
+		Digits(s_st.stack_a, s_st.sizeA);
+		return (0);
+	}
 	s_st.stack_a = (int *)malloc(sizeof(int) * (argc - 1));
 	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
 	initStruct(&s_st, argc);
 	initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv);
 	s_st.value = organizeGhost(s_st.stack_a, s_st.size);
 	sender(s_st.stack_a, s_st.stack_b, &s_st);
-	if (argc == 4)
-	{
-		Digits(s_st.stack_a, s_st.sizeA);
-		return (0);
-	}
 //	zeroTransform(s_st.stack_a, s_st.size);
 //	biggerNumber(s_st.stack_a, s_st.size, &s_st);
 //	biggerRotate(s_st.stack_a, &s_st, 1, 0);
 //	push(s_st.stack_a, s_st.stack_b, s_st.size);
-	while (zerochk(s_st.stack_b, s_st.size) != 0)
+	/*while (zerochk(s_st.stack_b, s_st.size) != 0)
 	{
 		biggerNumber(s_st.stack_b, s_st.size, &s_st);
 		biggerRotate(s_st.stack_b, &s_st, 2, 1);
 		p(s_st.stack_b, s_st.stack_a, s_st.size, 1);
-	}
+	}*/
 	int index = 0;
 	while (index < s_st.size)
 	{
