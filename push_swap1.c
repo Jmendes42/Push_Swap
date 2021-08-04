@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/03 18:12:53 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/04 18:11:59 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	biggerNumber(int *stack, int size, t_list *s_st)
 int	main(int argc, char *argv[])
 {
 	t_list	s_st;
+	int index = 0;
 	
 	if (argc == 4)
 	{
@@ -89,6 +90,23 @@ int	main(int argc, char *argv[])
 	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
 	initStruct(&s_st, argc);
 	initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv);
+
+
+
+/*		printf("*******%d\n", s_st.sizeA);
+	r(s_st.stack_a, s_st.sizeA, 1);
+	while (index < s_st.size)
+	{
+		printf("%d\n", s_st.stack_a[index]);
+		index++;
+	}
+		index = 0;
+	while (index < s_st.sizeB)
+	{
+		printf("%d\n", s_st.stack_b[index]);
+		index++;
+	}
+	return (9);*/
 	s_st.value = organizeGhost(s_st.stack_a, s_st.size);
 	sender(s_st.stack_a, s_st.stack_b, &s_st);
 //	zeroTransform(s_st.stack_a, s_st.size);
@@ -101,12 +119,11 @@ int	main(int argc, char *argv[])
 		biggerRotate(s_st.stack_b, &s_st, 2, 1);
 		p(s_st.stack_b, s_st.stack_a, s_st.size, 1);
 	}*/
-	int index = 0;
-	while (index < s_st.size)
+/*	while (index < s_st.size)
 	{
 		printf("%d\n", s_st.stack_a[index]);
 		index++;
-	}
+	}*/
 	index = 0;
 	free (s_st.stack_a);
 	free (s_st.stack_b);

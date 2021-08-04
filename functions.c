@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/03 19:15:34 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/04 18:10:24 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	r(int *stack, int size, int control)
 
 	index = 0;
 	tmp = stack[0];
-	while (index < size - 1)
+	while (index < size)
 	{
 		stack[index] = stack[index + 1];
 		index++;
 	}
-	stack[index] = tmp;
+	stack[size - 1] = tmp;
 	if (control == 1)
 		write(1, "ra\n", 3);
 	else if (control == 2)
@@ -80,16 +80,18 @@ void	rr_r(int *stack_a, int *stack_b, int size)
 	rr(stack_a, size, 0);
 	rr(stack_b, size, 0);
 }
-void	p(int *stack_r, int *stack_p, int size, int control)
+void	p(int *stack_r, int *stack_p, int control, t_list *s_st)
 {
 	int tmp;
 
 	tmp = stack_p[0];
-	printf("****%d*****\n", tmp);
 	stack_p[0] = 0;
-	r(stack_p, size, 0);
-	rr(stack_r, size, 0);
+	r(stack_p, s_st->size, 0);
+	rr(stack_r, s_st->sizeA, 0);
 	stack_r[0] = tmp;
+	s_st->sizeA -= 1;
+	s_st->sizeB += 1;
+
 	if (control == 1)
 		write(1, "pa\n", 3);
 	else if (control == 2)

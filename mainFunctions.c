@@ -14,18 +14,18 @@ int	zerochk(int *stack, int size)
 	return (0);
 }
 
-void	push(int *stack_a, int *stack_b, int size)
+/*void	push(int *stack_a, int *stack_b, int size)
 {
 	int index;
 
 	index = 0;
 	while (index < size - 1)
 	{
-		p(stack_a, stack_b, size, 2);
+		p(stack_a, stack_b, 2, s_st);
 		//printf("%d\n", stack_b[index]);
 		index++;
 	}
-}
+}*/
 
 void	initStruct(t_list *s_st, int argc)
 {
@@ -64,18 +64,16 @@ int	organizeGhost(int *stack, int size)
 	while (index < size)
 	{
 		stackGhost[index] = stack[index];
-			printf("##%d\n", stackGhost[index]);
 		index++;
 	}
 	index = 0;
 	while (index < size)
 	{
-		while (stackGhost[index] < stackGhost[index + 1])
+		while (stackGhost[index] > stackGhost[index + 1])
 		{
 			if (stackGhost[index + 1] == 0)
 				break ;
-			printf("%d    %d\n", stackGhost[index], stackGhost[index + 1]);
-			tmp = stackGhost[index + 1];
+			tmp = stackGhost[index];
 			stackGhost[index] = stackGhost[index + 1];
 			stackGhost[index + 1] = tmp;
 			 index--;
@@ -85,7 +83,6 @@ int	organizeGhost(int *stack, int size)
 	index = 0;
 	while (index < size)
 	{
-		printf("##########%d\n", stackGhost[index]);
 		index++;
 	}
 	return (stackGhost[size / 2]);
@@ -112,27 +109,37 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	index = 0;
 	while (s_st->sizeA > 3)
 	{
-		//printf("*****%d\n", s_st->sizeA);
-		index = 0;
 		s_st->value = organizeGhost(stack_a, s_st->size);
-		printf("###%d###\n", s_st->value);
 		while (index < s_st->size)
 		{
-			if (stack_a[index] <= s_st->value)
+			if (stack_a[index] <= s_st->value && stack_a[index] != 0)
 			{
-				p(stack_b, stack_a, s_st->size, 1);
-				s_st->sizeA--;
+				printf("%d$$$$$\n", stack_a[index]);
+				p(stack_b, stack_a, 2, s_st);
 			}
 			else
 				r(stack_a, s_st->size, 1);
-			if (stackRun(stack_a, s_st->size, s_st->value) == 0)
+			if (stackRun(stack_a, s_st->sizeA, s_st->value) == 0)
+				break ;
+			if (s_st->sizeA == 3)
 				break ;
 			index++;
 		}
 	}
 	index = 0;
-	if (stack_a[0] == 0)
-		r(stack_a, s_st->size, 1);
 	Digits(stack_a, s_st->sizeA);
+	index = 0;
+	while (index < s_st->size)
+	{
+		printf("%d\n", s_st->stack_a[index]);
+		index++;
+	}
+		printf("*****%d\n", s_st->sizeB);
+		index = 0;
+	while (index < s_st->sizeB)
+	{
+		printf("%d\n", s_st->stack_b[index]);
+		index++;
+	}
 }
 
