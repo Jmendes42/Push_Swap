@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_st
 {
@@ -29,7 +30,8 @@ void	s(int *stack, int control);
 void	ss(int *stack_a, int *stack_b);
 void	r(int *stack, int size, int control);
 void	rr(int *stack, int size, int control);
-void	p(int *stack_r, int *stack_p, int control, t_list *s_st);
+void	pb(int *stack_b, int *stack_a, t_list *s_st);
+void	pa(int *stack_a, int *stack_b, t_list *s_st);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	push(int *stack_a, int *stack_b, int size);
 void	initStruct(t_list *s_st, int argc);

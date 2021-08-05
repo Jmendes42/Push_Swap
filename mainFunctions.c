@@ -95,11 +95,30 @@ int	stackRun(int *stack, int size, int value)
 	index = 0;
 	while (index < size)
 	{
-		if (stack[index] <= value)
+		if (stack[index] < value)
 			return (1);
 		index++;
 	}
 	return (0);
+}
+
+void	biggerNumber(int *stack, int size, t_list *s_st)
+{
+	int index;
+
+	s_st->value = INT_MIN;
+	index = 0;
+	while (index < size)
+	{
+		if (stack[index] > s_st->value)
+		{
+			s_st->value = stack[index];
+			s_st->position = index;
+			//printf("%d\n", s_st->value);
+			//printf("%d\n", s_st->position);
+		}
+		index++;
+	}
 }
 
 void	sender(int *stack_a, int *stack_b, t_list *s_st)
@@ -109,27 +128,29 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	index = 0;
 	while (s_st->sizeA > 3)
 	{
-		s_st->value = organizeGhost(stack_a, s_st->size);
-		while (index < s_st->size)
-		{
-			if (stack_a[index] <= s_st->value && stack_a[index] != 0)
+		s_st->value = organizeGhost(stack_a, s_st->sizeA);
+		while (stackRun(stack_a, s_st->sizeA, s_st->value) != 0)
+		{	
+			if (stack_a[0] < s_st->value)
 			{
-				printf("%d$$$$$\n", stack_a[index]);
-				p(stack_b, stack_a, 2, s_st);
+				pb(stack_b, stack_a, s_st);
 			}
-			else
-				r(stack_a, s_st->size, 1);
-			if (stackRun(stack_a, s_st->sizeA, s_st->value) == 0)
-				break ;
-			if (s_st->sizeA == 3)
-				break ;
-			index++;
+			else 
+				r(stack_a, s_st->sizeA, 1);
 		}
 	}
-	index = 0;
 	Digits(stack_a, s_st->sizeA);
+	while (s_st->sizeB > 0)
+	{
+	//	printf("%d$$$$$\n", s_st->value);
+		biggerNumber(stack_b, s_st->sizeB, s_st);
+		while (stack_b[0] != s_st->value)
+			r(stack_b, s_st->sizeB, 2);
+		pa(stack_a, stack_b, s_st);
+	}
+
 	index = 0;
-	while (index < s_st->size)
+	while (index < s_st->sizeA)
 	{
 		printf("%d\n", s_st->stack_a[index]);
 		index++;

@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/04 18:11:59 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/05 22:20:05 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 void	Digits(int *stack, int sizeA)
 {
-	if (stack[0] > stack[1] && stack[2] > stack[0])
+	if (stack[0] < stack[1] && stack[1] < stack[2])
+		return ;
+	else if (stack[0] > stack[1] && stack[2] > stack[0])
 		s(stack, 1);
-	if (stack[0] > stack[1] && stack[1] > stack[2])
+	else if (stack[0] > stack[1] && stack[1] > stack[2])
 	{
 		s(stack, 1);
 		rr(stack, sizeA, 1);
 	}
-	if (stack[0] > stack[1] && stack[2] > stack[1])
+	else if (stack[0] > stack[1] && stack[2] > stack[1])
 		r(stack, sizeA, 1);
-	if (stack[0] < stack[2] && stack[0] < stack[1])
+	else if (stack[0] < stack[2] && stack[0] < stack[1])
 	{
 		s(stack, 1);
 		r(stack, sizeA, 1);
 	}
-	if (stack[0] < stack[1] && stack[0] > stack[2])
+	else if (stack[0] < stack[1] && stack[0] > stack[2])
 		rr(stack, sizeA, 1);
 }
 
@@ -58,43 +60,24 @@ void	biggerRotate(int *stack, t_list *s_st, int control, int up)
 	}
 }
 
-void	biggerNumber(int *stack, int size, t_list *s_st)
-{
-	int index;
-
-	s_st->value = 0;
-	index = 0;
-	while (index < size)
-	{
-		if (stack[index] > s_st->value)
-		{
-			s_st->value = stack[index];
-			s_st->position = index;
-			//printf("%d\n", s_st->value);
-			//printf("%d\n", s_st->position);
-		}
-		index++;
-	}
-}
 int	main(int argc, char *argv[])
 {
 	t_list	s_st;
 	int index = 0;
 	
+	s_st.stack_a = (int *)malloc(sizeof(int) * (argc - 1));
+	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
+	initStruct(&s_st, argc);
+	initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv);
 	if (argc == 4)
 	{
 		Digits(s_st.stack_a, s_st.sizeA);
 		return (0);
 	}
-	s_st.stack_a = (int *)malloc(sizeof(int) * (argc - 1));
-	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
-	initStruct(&s_st, argc);
-	initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv);
 
 
 
-/*		printf("*******%d\n", s_st.sizeA);
-	r(s_st.stack_a, s_st.sizeA, 1);
+	/*r(s_st.stack_a, s_st.sizeA, 1);
 	while (index < s_st.size)
 	{
 		printf("%d\n", s_st.stack_a[index]);
@@ -107,7 +90,6 @@ int	main(int argc, char *argv[])
 		index++;
 	}
 	return (9);*/
-	s_st.value = organizeGhost(s_st.stack_a, s_st.size);
 	sender(s_st.stack_a, s_st.stack_b, &s_st);
 //	zeroTransform(s_st.stack_a, s_st.size);
 //	biggerNumber(s_st.stack_a, s_st.size, &s_st);
@@ -119,7 +101,7 @@ int	main(int argc, char *argv[])
 		biggerRotate(s_st.stack_b, &s_st, 2, 1);
 		p(s_st.stack_b, s_st.stack_a, s_st.size, 1);
 	}*/
-/*	while (index < s_st.size)
+	/*while (index < s_st.sizeA)
 	{
 		printf("%d\n", s_st.stack_a[index]);
 		index++;

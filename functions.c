@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/04 18:10:24 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/05 22:27:59 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,31 @@ void	rr_r(int *stack_a, int *stack_b, int size)
 	rr(stack_a, size, 0);
 	rr(stack_b, size, 0);
 }
-void	p(int *stack_r, int *stack_p, int control, t_list *s_st)
+void	pb(int *stack_b, int *stack_a, t_list *s_st)
 {
 	int tmp;
 
-	tmp = stack_p[0];
-	stack_p[0] = 0;
-	r(stack_p, s_st->size, 0);
-	rr(stack_r, s_st->sizeA, 0);
-	stack_r[0] = tmp;
+	tmp = stack_a[0];
+	stack_a[0] = 0;
+	r(stack_a, s_st->size, 0);
+	rr(stack_b, s_st->size, 0);
+	stack_b[0] = tmp;
 	s_st->sizeA -= 1;
 	s_st->sizeB += 1;
+	write(1, "pb\n", 3);
+}
 
-	if (control == 1)
+void	pa(int *stack_a, int *stack_b, t_list *s_st)
+{
+	int tmp;
+
+	tmp = stack_b[0];
+	stack_b[0] = 0;
+	r(stack_b, s_st->size, 0);
+	rr(stack_a, s_st->size, 0);
+	stack_a[0] = tmp;
+	s_st->sizeB -= 1;
+	s_st->sizeA += 1;
+
 		write(1, "pa\n", 3);
-	else if (control == 2)
-		write(1, "pb\n", 3);
 }
