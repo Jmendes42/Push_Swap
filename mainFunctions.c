@@ -2,7 +2,7 @@
 
 int	zerochk(int *stack, int size)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < size)
@@ -38,7 +38,7 @@ void	initStruct(t_list *s_st, int argc)
 
 void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (index < size)
@@ -54,18 +54,11 @@ void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 	}
 }
 
-int	organizeGhost(int *stack, int size)
+int	subOrganizeGhost(int *stackGhost, int size)
 {
-	int	tmp;
-	int	index;
-	int	stackGhost[size];
+	int index;
+	int tmp;
 
-	index = 0;
-	while (index < size)
-	{
-		stackGhost[index] = stack[index];
-		index++;
-	}
 	index = 0;
 	while (index < size)
 	{
@@ -80,12 +73,26 @@ int	organizeGhost(int *stack, int size)
 		}
 		index++;
 	}
+	return (stackGhost[size / 2]);
+}
+
+int	organizeGhost(int *stack, int size)
+{
+	int	value;
+	int	index;
+	int	*stackGhost;
+
 	index = 0;
+	stackGhost = malloc(sizeof(int) * size);
 	while (index < size)
 	{
+		stackGhost[index] = stack[index];
 		index++;
 	}
-	return (stackGhost[size / 2]);
+	value = subOrganizeGhost(stackGhost, size);
+	index = 0;
+	free (stackGhost);
+	return (value);
 }
 
 int	stackRun(int *stack, int size, int value)
@@ -123,12 +130,15 @@ void	biggerNumber(int *stack, int size, t_list *s_st)
 
 void	sender(int *stack_a, int *stack_b, t_list *s_st)
 {
+	int i = 0;
 	int index;
 
 	index = 0;
 	while (s_st->sizeA > 3)
 	{
+		i = 0;
 		s_st->value = organizeGhost(stack_a, s_st->sizeA);
+		printf("%d$$$$$\n", s_st->value);
 		while (stackRun(stack_a, s_st->sizeA, s_st->value) != 0)
 		{	
 			if (stack_a[0] < s_st->value)
@@ -142,7 +152,6 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	Digits(stack_a, s_st->sizeA);
 	while (s_st->sizeB > 0)
 	{
-	//	printf("%d$$$$$\n", s_st->value);
 		biggerNumber(stack_b, s_st->sizeB, s_st);
 		while (stack_b[0] != s_st->value)
 			r(stack_b, s_st->sizeB, 2);
@@ -163,4 +172,3 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 		index++;
 	}
 }
-

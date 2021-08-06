@@ -5,9 +5,10 @@ RM	= rm -f
 NAME	= push_swap
 HEADER	= push_swap.h
 
-SRCS	= push_swap1.c\
+SRCS	= push_swap.c\
 	  utils.c\
 	  functions.c\
+	  functions1.c\
 	  mainFunctions.c\
 #LIBFT	=./libft/libft.a
 
