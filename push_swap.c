@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/06 16:57:33 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/09 18:03:30 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,50 @@ void	biggerRotate(int *stack, t_list *s_st, int control, int up)
 	}
 }
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	error(int argc, char *argv[])
+{
+	int index;
+	int i;
+	int c;
+
+	i = 0;
+	index = argc - 1;
+	while (index > 0)
+	{
+		c = ft_atoi(argv[index]);
+			printf("%d\n", INT_MIN);
+		i = 0;
+		while (argv[index][i] != '\0')
+		{
+			if (ft_isdigit(argv[index][i]) == 0)
+				return (1);
+			i++;
+		}
+		if (!ft_atoi(argv[index]))
+			return (1);
+		index--;
+	}
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	s_st;
 	int		index;
 
 	index = 0;
+	if (error(argc, argv) == 1)
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
 	s_st.stack_a = (int *)malloc(sizeof(int) * (argc - 1));
 	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
 	initStruct(&s_st, argc);

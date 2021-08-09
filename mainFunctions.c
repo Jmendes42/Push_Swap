@@ -62,14 +62,12 @@ int	subOrganizeGhost(int *stackGhost, int size)
 	index = 0;
 	while (index < size)
 	{
-		while (stackGhost[index] > stackGhost[index + 1])
+		if (stackGhost[index] > stackGhost[index + 1])
 		{
-			if (stackGhost[index + 1] == 0)
-				break ;
 			tmp = stackGhost[index];
 			stackGhost[index] = stackGhost[index + 1];
 			stackGhost[index + 1] = tmp;
-			 index--;
+			 index = -1;
 		}
 		index++;
 	}
@@ -83,7 +81,8 @@ int	organizeGhost(int *stack, int size)
 	int	*stackGhost;
 
 	index = 0;
-	stackGhost = malloc(sizeof(int) * size);
+	stackGhost = calloc(size, sizeof(int *));
+	//stackGhost = (int *)malloc(sizeof(int) * size);
 	while (index < size)
 	{
 		stackGhost[index] = stack[index];
@@ -138,7 +137,7 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	{
 		i = 0;
 		s_st->value = organizeGhost(stack_a, s_st->sizeA);
-		printf("%d$$$$$\n", s_st->value);
+		//printf("%d$$$$$\n", s_st->value);
 		while (stackRun(stack_a, s_st->sizeA, s_st->value) != 0)
 		{	
 			if (stack_a[0] < s_st->value)
@@ -158,7 +157,7 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 		pa(stack_a, stack_b, s_st);
 	}
 
-	index = 0;
+	/*index = 0;
 	while (index < s_st->sizeA)
 	{
 		printf("%d\n", s_st->stack_a[index]);
@@ -170,5 +169,5 @@ void	sender(int *stack_a, int *stack_b, t_list *s_st)
 	{
 		printf("%d\n", s_st->stack_b[index]);
 		index++;
-	}
+	}*/
 }

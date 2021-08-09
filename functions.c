@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 11:51:45 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/06 15:59:40 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/07 04:47:48 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	r(int *stack, int size, int control)
 
 	index = 0;
 	tmp = stack[0];
-	while (index < size)
+	while (index < size - 1)
 	{
 		stack[index] = stack[index + 1];
 		index++;
