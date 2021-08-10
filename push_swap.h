@@ -25,6 +25,8 @@ typedef struct s_st
 }				t_list;*/
 
 int	ft_atoi(const char *str);
+int	ft_strlen(char *str);
+int	ft_longatoi(const char *str);
 
 void	s(int *stack, int control);
 void	ss(int *stack_a, int *stack_b);

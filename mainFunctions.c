@@ -129,13 +129,9 @@ void	biggerNumber(int *stack, int size, t_list *s_st)
 
 void	sender(int *stack_a, int *stack_b, t_list *s_st)
 {
-	int i = 0;
-	int index;
 
-	index = 0;
 	while (s_st->sizeA > 3)
 	{
-		i = 0;
 		s_st->value = organizeGhost(stack_a, s_st->sizeA);
 		//printf("%d$$$$$\n", s_st->value);
 		while (stackRun(stack_a, s_st->sizeA, s_st->value) != 0)

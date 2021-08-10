@@ -71,28 +71,60 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+int	doubles(char *argv[])
+{
+	int index;
+	int i;
+
+	index = 1;
+	i = 0;
+	while (argv[index] != NULL)
+	{
+		i = index + 1;
+		while(argv[i] != NULL)
+		{
+			if (ft_strncmp(argv[index], argv[i], ft_strlen(argv[index])) == 0)
+				return (1);
+			i++;
+		}
+		index++;
+	}
+	return (0);
+}
+
 int	error(int argc, char *argv[])
 {
 	int index;
 	int i;
-	int c;
 
 	i = 0;
 	index = argc - 1;
 	while (index > 0)
 	{
-		c = ft_atoi(argv[index]);
-			printf("%d\n", INT_MIN);
 		i = 0;
 		while (argv[index][i] != '\0')
 		{
 			if (ft_isdigit(argv[index][i]) == 0)
-				return (1);
+			{
+				if (argv[index][i] == '-' && i == 0)
+					i++;
+				else
+					return (1);
+			}
 			i++;
 		}
 		if (!ft_atoi(argv[index]))
 			return (1);
 		index--;
+	}
+	if (doubles(argv) == 1)
+		return (1);
+	index = 1;
+	while (argv[index] != NULL)
+	{
+		if (ft_longatoi(argv[index]) > INT_MAX || ft_longatoi(argv[index]) < INT_MIN)
+			return (1);
+		index++;
 	}
 	return (0);
 }
@@ -100,9 +132,7 @@ int	error(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_list	s_st;
-	int		index;
 
-	index = 0;
 	if (error(argc, argv) == 1)
 	{
 		write(2, "Error\n", 6);
