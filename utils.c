@@ -2,14 +2,13 @@
 
 int	ft_strlen(char *str)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (str[index])
 		index++;
 	return (index);
 }
-
 
 int	ft_longatoi(const char *str)
 {
@@ -21,7 +20,7 @@ int	ft_longatoi(const char *str)
 	sign = 1;
 	index = 0;
 	while (str[index] && ((str[index] >= 9 && str[index] <= 13)
-				|| (str[index] == 32)))
+			|| (str[index] == 32)))
 		index++;
 	if (str[index] == '-')
 	{
@@ -50,7 +49,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	index = 0;
 	while (str[index] && ((str[index] >= 9 && str[index] <= 13)
-				|| (str[index] == 32)))
+			|| (str[index] == 32)))
 		index++;
 	if (str[index] == '-')
 	{
@@ -71,7 +70,7 @@ int	ft_atoi(const char *str)
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t index;
+	size_t	index;
 
 	index = 0;
 	if (n == 0)

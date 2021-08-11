@@ -1,0 +1,48 @@
+functions1.c:	r(stack_a, s_st->size, 0);
+functions1.c:	rr(stack_b, s_st->size, 0);
+functions1.c:	s_st->sizeA -= 1;
+functions1.c:	s_st->sizeB += 1;
+functions1.c:	r(stack_b, s_st->size, 0);
+functions1.c:	rr(stack_a, s_st->size, 0);
+functions1.c:	s_st->sizeB -= 1;
+functions1.c:	s_st->sizeA += 1;
+mainFunctions.c:	s_st->size = argc - 1;
+mainFunctions.c:	s_st->sizeA = argc - 1;
+mainFunctions.c:	s_st->sizeB = 0;
+mainFunctions.c:	s_st->position = 0;
+mainFunctions.c:	s_st->bigPosition = 0;
+mainFunctions.c:	s_st->value = 0;
+mainFunctions.c:	s_st->chunks = 0;
+mainFunctions.c:		s_st->chunks += s_st->size / 10;
+mainFunctions.c:		return (stackGhost[s_st->chunks]);
+mainFunctions.c:	if (s_st->size > 100)
+mainFunctions.c:			s_st->bigPosition = index;
+mainFunctions.c:	s_st->value = INT_MIN;
+mainFunctions.c:		if (stack[index] > s_st->value)
+mainFunctions.c:			s_st->value = stack[index];
+mainFunctions.c:			s_st->position = index;
+mainFunctions.c:			//printf("%d\n", s_st->value);
+mainFunctions.c:			//printf("%d\n", s_st->position);
+mainFunctions.c:	while (s_st->sizeA > 3)
+mainFunctions.c:		s_st->value = organizeGhost(stack_a, s_st->sizeA, s_st);
+mainFunctions.c:		while (stackRun(stack_a, s_st->sizeA, s_st->value, s_st) != 0)
+mainFunctions.c:			while (stack_a[0] < s_st->value)
+mainFunctions.c:			if (s_st->bigPosition > (s_st->sizeA / 2)) 
+mainFunctions.c:				rr(stack_a, s_st->sizeA, 1);
+mainFunctions.c:				r(stack_a, s_st->sizeA, 1);
+mainFunctions.c:			while (stack_a[0] < s_st->value)
+mainFunctions.c:	Digits(stack_a, s_st->sizeA);
+mainFunctions.c:	while (s_st->sizeB > 0)
+mainFunctions.c:		biggerNumber(stack_b, s_st->sizeB, s_st);
+mainFunctions.c:		while (stack_b[0] != s_st->value)
+mainFunctions.c:			if (s_st->position > (s_st->sizeB / 2))
+mainFunctions.c:				rr(stack_b, s_st->sizeB, 2);
+mainFunctions.c:				r(stack_b, s_st->sizeB, 2);
+mainFunctions.c:	while (index < s_st->sizeA)
+mainFunctions.c:		printf("%d    ", s_st->stack_a[index]);
+push_swap.c:		index = s_st->position + 1;
+push_swap.c:		index = s_st->position;
+push_swap.c:	if (s_st->position <= ((s_st->size - 1) / 2))
+push_swap.c:			r(stack, s_st->size, control);
+push_swap.c:		while (index < s_st->size)
+push_swap.c:			rr(stack, s_st->size, control);

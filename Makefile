@@ -1,15 +1,17 @@
 CC	= gcc
-FLAGS	= -Wall -Werror -Wextra -g -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -fsanitize=address
 RM	= rm -f
 
 NAME	= push_swap
 HEADER	= push_swap.h
 
 SRCS	= push_swap.c\
+		push_swap1.c\
 	  utils.c\
 	  functions.c\
 	  functions1.c\
 	  mainFunctions.c\
+	  mainFunctions1.c\
 #LIBFT	=./libft/libft.a
 
 OBJS	= $(SRCS:.c=.o)
