@@ -44,7 +44,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	push(int *stack_a, int *stack_b, int size);
 void	initStruct(t_list *s_st, int argc);
 int		zerochk(int *stack, int size);
-void	initStacks(int *stack_a, int *stack_b, int size, char *argv[]);
+int		initStacks(int *stack_a, int *stack_b, int size, char *argv[]);
 int		organizeGhost(int *stack, int size, t_list *s_st);
 void	Digits(int *stack, int sizeA);
 void	sender(int *stack_a, int *stack_b, t_list *s_st);

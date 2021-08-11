@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/11 06:22:46 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/11 07:36:36 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	main(int argc, char *argv[])
 	s_st.stack_a = (int *)malloc(sizeof(int) * (argc - 1));
 	s_st.stack_b = (int *)malloc(sizeof(int) * (argc - 1));
 	initStruct(&s_st, argc);
-	initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv);
+	if (initStacks(s_st.stack_a, s_st.stack_b, s_st.size, argv) == 1)
+		return (0);
 	if (order(s_st.stack_a, s_st.sizeA) == 0)
 		return (0);
 	if (argc == 4)

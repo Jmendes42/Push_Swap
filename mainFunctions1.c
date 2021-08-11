@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 04:25:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/11 06:23:15 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/11 07:37:52 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	initStruct(t_list *s_st, int argc)
 	s_st->chunks = 0;
 }
 
-void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
+int	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 {
 	int	index;
 
@@ -48,6 +48,15 @@ void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 		stack_b[index] = 0;
 		index++;
 	}
+	if (size == 2)
+	{
+		if (stack_a[0] > stack_a[1])
+		{
+			s(stack_a, 1);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 int	subSubOrganizeGhost(int *stackGhost, int size, int control, t_list *s_st)
