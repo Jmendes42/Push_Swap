@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 12:43:43 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/11 06:18:13 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/11 06:22:46 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	error(int argc, char *argv[])
 	{
 		if (subSubError(argv, index, i) == 1)
 			return (1);
-		//if (!ft_atoi(argv[index]))
-		//	return (1);
 		index--;
 	}
 	return (subError(argv, max));

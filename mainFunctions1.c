@@ -6,7 +6,7 @@
 /*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 04:25:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/11 06:21:49 by jmendes          ###   ########.fr       */
+/*   Updated: 2021/08/11 06:23:15 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,8 @@ void	initStacks(int *stack_a, int *stack_b, int size, char *argv[])
 	index = 0;
 	while (index < size)
 	{
-		//if (!ft_strncmp(argv[index + 1], "0", sizeof(argv[index + 1])))
-		//	stack_b[index] = ft_atoi("-1");
-		//else
-		//{
-			stack_a[index] = ft_atoi(argv[index + 1]);
-			stack_b[index] = 0;
-		//}
+		stack_a[index] = ft_atoi(argv[index + 1]);
+		stack_b[index] = 0;
 		index++;
 	}
 }
