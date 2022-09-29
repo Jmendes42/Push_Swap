@@ -1,33 +1,21 @@
 CC	= gcc
-FLAGS	= -Wall -Wextra -Werror -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror 
 RM	= rm -f
 
 NAME	= push_swap
 HEADER	= push_swap.h
 
-SRCS	= push_swap.c\
-		push_swap1.c\
-	  utils.c\
-	  functions.c\
-	  functions1.c\
-	  mainFunctions.c\
-	  mainFunctions1.c\
-#LIBFT	=./libft/libft.a
+SRC = $(wildcard ./src/*.c)
 
-OBJS	= $(SRCS:.c=.o)
+OBJ	= $(SRC:.c=.o)
 
-all:	$(NAME) #$(NAME_C)
-
-#$(NAME_C) :
-#	$(MAKE) bonus -C libft
-#	gcc $(FLAGS) $(LIBFT) -o $(NAME_C)
-
+all:	$(NAME) 
 
 $(NAME) :
-	gcc $(SRCS) $(FLAGS) -o $(NAME)
+	gcc $(SRC) $(FLAGS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean: clean
 		$(RM) $(NAME) 

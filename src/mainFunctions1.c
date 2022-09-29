@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mainFunctions1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmendes <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jmendes <jmendes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 04:25:37 by jmendes           #+#    #+#             */
-/*   Updated: 2021/08/11 07:37:52 by jmendes          ###   ########.fr       */
+/*   Updated: 2022/09/29 01:45:41 by jmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	zerochk(int *stack, int size)
 {
